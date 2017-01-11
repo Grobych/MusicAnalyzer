@@ -1,8 +1,75 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="controller.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane fx:id="mainSplitPane"  dividerPositions="0.3" mouseTransparent="true" prefHeight="1600.0" prefWidth="900.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+        <items>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="400.0">
+              <buttons>
+                <Button fx:id="loadFolderButton"  mnemonicParsing="false" text="Load Folder" />
+                <Button fx:id="loadFileButton"  mnemonicParsing="false" text="Load files" />
+                <Button fx:id="runButton"  mnemonicParsing="false" text="RUN" />
+              </buttons>
+            </ButtonBar>
+                  <TableView >
+                    <columns>
+                      <TableColumn fx:id="tableNameColumn" prefWidth="440.0" text="Name" />
+                      <TableColumn fx:id="tableStateColumn" prefWidth="120.0" text="Status" />
+                    </columns>
+                  </TableView>
+         </children>
+      </VBox>
+            <VBox>
+               <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" text="RMS             " textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
+                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" styleClass="label-bright" text="XXX" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" text="Tone             " textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
+                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" styleClass="label-bright" text="YYY" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" text="Temp             " textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
+                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" styleClass="label-bright" text="ZZZ" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
+               </children>
+            </HBox>
+                  <BarChart>
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+                  <LineChart styleClass="line-chart">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+
+               </children>
+            </VBox>
+        </items>
+      </SplitPane>
