@@ -10,6 +10,7 @@ import static model.Constants.AFClenght;
 public class Song {
     private String name;
     private String artist;
+    private String album;
     private Time lenght;
     private double [] AFC = new double[AFClenght];    // АЧХ
     private int [] wave;                       // волновое представление
@@ -42,6 +43,14 @@ public class Song {
 
     public Tone getTone() {
         return tone;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
     }
 
     public void setAFC(double[] AFC) {
@@ -80,4 +89,20 @@ public class Song {
     public void setWave(int[] wave) {
         this.wave = wave;
     }
+
+    @Override
+    public String toString()
+    {
+        String result = new String();
+        if (name==null) result = result.concat("\nName is not set!\n");
+        else result = result.concat("\nName: "+this.name);
+        if (name==null) result = result.concat("\nAuthor is not set!\n");
+        else result =  result.concat("\nAuthor: "+this.artist);
+        if (name==null) result = result.concat("\nAlbum is not set!\n");
+        else result = result.concat("\nAlbum: "+this.album);
+        return result;
+
+    }
+
+
 }
