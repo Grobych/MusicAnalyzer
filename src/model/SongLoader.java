@@ -18,7 +18,7 @@ public class SongLoader {
         Song song = new Song();
         boolean ID1 = mp3.hasID3v1Tag();
         boolean ID2 = mp3.hasID3v2Tag();
-        System.out.println("Ver 1: "+ID1+" \nVer2: "+ID2);
+        //System.out.println("Ver 1: "+ID1+" \nVer2: "+ID2);
 
         if (ID1){
             song.setArtist(mp3.getID3v1Tag().getArtist());
