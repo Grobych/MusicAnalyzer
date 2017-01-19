@@ -37,7 +37,7 @@ public class SongLoader {
     public static Song loadSong(String path){
         Song song;// = new Song();
         try {
-            MP3File mp3 = new MP3File(path);
+            MP3File mp3 = new MP3File(path); /// !!!! some song get StringIndexOutOfBand Ex (-4)  !!!!
             song = parseMP3(mp3);
         } catch (IOException e) {
             System.out.println("File open error!");
@@ -48,12 +48,19 @@ public class SongLoader {
             return null;
             //e.printStackTrace();
         }
+        catch (StringIndexOutOfBoundsException e){
+            System.out.println("ERROR   \n"+path+" Len: "+path.length());
+            System.out.println(e);
+            //e.printStackTrace();
+            return null;
+        }
 
         return song;
     }
 
-    public static List<Song> getSongList(List<File> fileList){
+    public static void loadSongList(List<File> fileList){
         List<Song> list = fileList.stream().map(tmp -> SongLoader.loadSong(tmp.getAbsolutePath())).collect(Collectors.toList());
-        return list;
+        list.forEach(SongList::add);
+     //   return list;
     }
 }

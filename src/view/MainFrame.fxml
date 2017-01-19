@@ -24,7 +24,7 @@
                 <Button fx:id="runButton"  mnemonicParsing="false" text="RUN" />
               </buttons>
             </ButtonBar>
-                  <TableView >
+                  <TableView prefHeight="1440.0" fx:id="songTable" >
                     <columns>
                       <TableColumn fx:id="tableNameColumn" prefWidth="440.0" text="Name" />
                       <TableColumn fx:id="tableStateColumn" prefWidth="120.0" text="Status" />

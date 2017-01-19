@@ -17,6 +17,16 @@ public class Song {
     private double RMS;
     private Tone tone;
 
+    private Status status = Status.WAITING;
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public String getArtist() {
         return artist;
     }
@@ -100,6 +110,7 @@ public class Song {
         else result =  result.concat("\nAuthor: "+this.artist);
         if (name==null) result = result.concat("\nAlbum is not set!\n");
         else result = result.concat("\nAlbum: "+this.album);
+        result = result.concat("\n");
         return result;
 
     }
