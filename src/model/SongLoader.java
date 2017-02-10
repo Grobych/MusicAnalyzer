@@ -59,13 +59,10 @@ public class SongLoader {
     }
 
     public static void loadSongList(List<File> fileList){
-        System.out.println("Start loading");
         for (File file : fileList){
             Song song = loadSong(file.getAbsolutePath());
             SongList.add(song);
-            System.out.println("check");
         }
-        System.out.println("Stop loading");
 //        List<Song> list = fileList.stream().map(tmp -> SongLoader.loadSong(tmp.getAbsolutePath())).collect(Collectors.toList());
 //        list.forEach(SongList::add);
      //   return list;
