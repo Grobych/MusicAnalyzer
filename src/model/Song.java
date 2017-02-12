@@ -16,6 +16,18 @@ public class Song {
     private int [] wave;                       // волновое представление
     private double RMS;
     private Tone tone;
+    private String fullName;
+
+    public String getFullName() {
+        if (fullName==null){
+            fullName = artist.concat(" - "+name);
+        }
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     private Status status = Status.WAITING;
 
