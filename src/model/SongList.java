@@ -1,11 +1,8 @@
 package model;
 
-import com.sun.javafx.collections.ImmutableObservableList;
+import data.Song;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**

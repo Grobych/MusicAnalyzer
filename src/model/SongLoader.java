@@ -1,13 +1,12 @@
 package model;
 
+import data.Song;
 import org.farng.mp3.MP3File;
 import org.farng.mp3.TagException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Alex on 13.01.2017.
