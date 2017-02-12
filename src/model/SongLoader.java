@@ -28,7 +28,12 @@ public class SongLoader {
             song.setArtist(mp3.getID3v2Tag().getLeadArtist());
             song.setName(mp3.getID3v2Tag().getSongTitle());
             song.setAlbum(mp3.getID3v2Tag().getAlbumTitle());
-        }else System.out.println("No tag!");
+        }else
+        {
+            Log.addMessage("No tag in "+mp3.getMp3file().getPath());
+            song.setFullName(mp3.getMp3file().getName());
+            System.out.println("No tag!");
+        }
 
         return song;
     }
@@ -37,6 +42,7 @@ public class SongLoader {
     public static Song loadSong(String path){
         Song song;// = new Song();
         try {
+            Log.addMessage("Try to parse "+path);
             MP3File mp3 = new MP3File(path); /// !!!! some song get StringIndexOutOfBand Ex (-4)  !!!!
             song = parseMP3(mp3);
         } catch (IOException e) {
@@ -49,8 +55,9 @@ public class SongLoader {
             //e.printStackTrace();
         }
         catch (StringIndexOutOfBoundsException e){
+            Log.addMessage("StringIndexOutOfBoundsException  in "+path);
             System.out.println("ERROR   \n"+path+" Len: "+path.length());
-            System.out.println(e);
+            System.out.println(e.getMessage());
             //e.printStackTrace();
             return null;
         }

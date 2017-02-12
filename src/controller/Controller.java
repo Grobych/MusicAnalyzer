@@ -12,13 +12,15 @@ import javafx.stage.FileChooser;
 import model.*;
 import threads.SongLoaderThread;
 
+import java.io.Closeable;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class Controller implements Initializable, Closeable {
     FileWorker fileWorker = new FileWorker();
     FileChooser fileChooser = new FileChooser();
     DirectoryChooser chooser = new DirectoryChooser();
@@ -69,13 +71,19 @@ public class Controller implements Initializable {
     @FXML
     public void inicialisationTable(){
         songTable.refresh();
-        tableNameColumn.setCellValueFactory(new PropertyValueFactory<Song,Integer>("Name"));
+        tableNameColumn.setCellValueFactory(new PropertyValueFactory<Song,Integer>("FullName"));
         tableStateColumn.setCellValueFactory(new PropertyValueFactory<Song,Integer>("Status"));
         songTable.setItems(SongList.getList());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Log.addMessage("Running program...");
         inicialisationTable();
+    }
+
+    @Override
+    public void close() throws IOException {
+        Log.close();
     }
 }
