@@ -1,4 +1,8 @@
-package model;
+package data;
+
+import model.Constants;
+import model.Status;
+import model.Tone;
 
 import java.sql.Time;
 
@@ -76,7 +80,7 @@ public class Song {
     }
 
     public void setAFC(double[] AFC) {
-        if (AFC.length!=Constants.AFClenght)
+        if (AFC.length!= Constants.AFClenght)
         {
             // SIZE ERROR!
             //
