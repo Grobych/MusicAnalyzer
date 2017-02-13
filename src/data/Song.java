@@ -6,7 +6,7 @@ import model.Tone;
 
 import java.sql.Time;
 
-import static model.Constants.AFClenght;
+import static model.Constants.AFClength;
 
 /**
  * Created by Alex on 12.01.2017.
@@ -15,8 +15,8 @@ public class Song {
     private String name;
     private String artist;
     private String album;
-    private Time lenght;
-    private double [] AFC = new double[AFClenght];    // АЧХ
+    private Time length;
+    private double [] AFC = new double[AFClength];    // АЧХ
     private int [] wave;                       // волновое представление
     private double RMS;
     private Tone tone;
@@ -55,8 +55,8 @@ public class Song {
         return name;
     }
 
-    public Time getLenght() {
-        return lenght;
+    public Time getLength() {
+        return length;
     }
 
     public double[] getAFC() {
@@ -80,7 +80,7 @@ public class Song {
     }
 
     public void setAFC(double[] AFC) {
-        if (AFC.length!= Constants.AFClenght)
+        if (AFC.length!= Constants.AFClength)
         {
             // SIZE ERROR!
             //
@@ -100,8 +100,8 @@ public class Song {
         this.artist = artist;
     }
 
-    public void setLenght(Time lenght) {
-        this.lenght = lenght;
+    public void setLength(Time length) {
+        this.length = length;
     }
 
     public void setRMS(double RMS) {

@@ -5,6 +5,6 @@ package model;
  */
 public class Constants {
 
-    public static int AFClenght = 32;
+    public static int AFClength = 32;
     public static String logFileName = new String("log.txt");
 }
