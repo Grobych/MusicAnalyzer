@@ -1,5 +1,6 @@
 package data;
 
+import jouvieje.bass.Bass;
 import model.Constants;
 import model.Status;
 import model.Tone;
@@ -12,6 +13,7 @@ import static model.Constants.AFClength;
  * Created by Alex on 12.01.2017.
  */
 public class Song {
+
     private String name;
     private String artist;
     private String album;
@@ -131,5 +133,9 @@ public class Song {
 
     }
 
+    public void method(){
+        //Bass bass =
+
+    }
 
 }

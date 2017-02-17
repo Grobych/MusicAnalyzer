@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class SongLoader {
 
+
     private static Song parseMP3(MP3File mp3){
         Song song = new Song();
         boolean ID1 = mp3.hasID3v1Tag();
