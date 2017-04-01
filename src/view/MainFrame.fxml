@@ -21,10 +21,10 @@
               <buttons>
                 <Button fx:id="loadFolderButton" onAction="#loadFolderButtonClick"  mnemonicParsing="false" text="Load Folder" />
                 <Button fx:id="loadFileButton"   onAction="#loadFileButtonClick" mnemonicParsing="false" text="Load files" />
-                <Button fx:id="runButton"  mnemonicParsing="false" text="RUN" />
+                <Button fx:id="runButton"        onAction="#runButtonClick" mnemonicParsing="false" text="RUN" />
               </buttons>
             </ButtonBar>
-                  <TableView prefHeight="1440.0" fx:id="songTable" >
+                  <TableView prefHeight="1440.0" fx:id="songTable" onMouseClicked="#showSongInfo">
                     <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
                     <columns>
                       <TableColumn fx:id="tableNameColumn" prefWidth="440.0" text="Name" />
@@ -37,8 +37,13 @@
                <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" text="RMS             " textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
-                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" styleClass="label-bright" text="XXX" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
+                   <Label  text="RMS - " />
+                   <Label fx:id="RMSLabel"  text="XXX"  />
+                   <Label  text="   MaxDelta RMS - " />
+                   <Label fx:id="MaxDeltaRMSLabel"  text="XXX"  />
+                   <Label  text="   AverageDeltaRMS - " />
+                   <Label fx:id="AverageDeltaRMSLabel"  text="XXX"  />
+
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -53,14 +58,14 @@
                            <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" styleClass="label-bright" text="ZZZ" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
                </children>
             </HBox>
-                  <BarChart>
+                  <LineChart fx:id="ACPChart">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <NumberAxis side="BOTTOM" />
                     </xAxis>
                     <yAxis>
                       <NumberAxis side="LEFT" />
                     </yAxis>
-                  </BarChart>
+                  </LineChart>
                   <LineChart styleClass="line-chart">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />

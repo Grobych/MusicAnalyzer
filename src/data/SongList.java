@@ -1,6 +1,5 @@
-package model;
+package data;
 
-import data.Song;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

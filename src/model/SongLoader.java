@@ -1,6 +1,7 @@
 package model;
 
 import data.Song;
+import data.SongList;
 import org.farng.mp3.MP3File;
 import org.farng.mp3.TagException;
 
@@ -41,6 +42,7 @@ public class SongLoader {
 
     public static Song loadSong(String path){
         Song song;// = new Song();
+
         try {
             Log.addMessage("Try to parse "+path);
             MP3File mp3 = new MP3File(path); /// !!!! some song get StringIndexOutOfBand Ex (-4)  !!!!
@@ -61,7 +63,7 @@ public class SongLoader {
             //e.printStackTrace();
             return null;
         }
-
+        song.setPath(path);
         return song;
     }
 

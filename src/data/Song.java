@@ -1,13 +1,12 @@
 package data;
 
-import jouvieje.bass.Bass;
-import model.Constants;
-import model.Status;
-import model.Tone;
+
+import model.Analyze.RMSAnalyzer;
 
 import java.sql.Time;
+import java.text.DecimalFormat;
 
-import static model.Constants.AFClength;
+import static data.Constants.AFClength;
 
 /**
  * Created by Alex on 12.01.2017.
@@ -20,9 +19,10 @@ public class Song {
     private Time length;
     private double [] AFC = new double[AFClength];    // АЧХ
     private int [] wave;                       // волновое представление
-    private double RMS;
+    private Dynamic RMS;
     private Tone tone;
     private String fullName;
+    private String path;
 
     public String getFullName() {
         if (fullName==null){
@@ -49,7 +49,7 @@ public class Song {
         return artist;
     }
 
-    public double getRMS() {
+    public Dynamic getRMS() {
         return RMS;
     }
 
@@ -75,6 +75,10 @@ public class Song {
 
     public String getAlbum() {
         return album;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     public void setAlbum(String album) {
@@ -106,7 +110,7 @@ public class Song {
         this.length = length;
     }
 
-    public void setRMS(double RMS) {
+    public void setRMS(Dynamic RMS) {
         this.RMS = RMS;
     }
 
@@ -116,6 +120,10 @@ public class Song {
 
     public void setWave(int[] wave) {
         this.wave = wave;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     @Override
@@ -133,9 +141,28 @@ public class Song {
 
     }
 
-    public void method(){
-        //Bass bass =
+    public String getRMSString(){
+        String pattern = "##0.0000";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        String format = decimalFormat.format(RMSAnalyzer.getAsDB(RMS.getRMS()));
+        format =format.concat("dB");
+        return new String(format);
+    }
 
+    public String getMaxDeltaRMSString(){
+        String pattern = "##0.0000";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        String format = decimalFormat.format(RMSAnalyzer.getAsDB(RMS.getMaxDeltaRMS()));
+        format = format.concat("dB");
+        return new String(format);
+    }
+
+    public String getAverageDeltaRMSString(){
+        String pattern = "##0.0000";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        String format = decimalFormat.format(RMSAnalyzer.getAsDB(RMS.getAverageDeltaRMS()));
+        format = format.concat("dB");
+        return new String(format);
     }
 
 }
