@@ -43,10 +43,11 @@ public class Controller implements Initializable, Closeable {
     @FXML
     TableView<Song> songTable;
     @FXML
-    LineChart <Integer, Float> ACPChart;
+    LineChart <String, Double> ACPChart, RMSChart;
     @FXML
     Label RMSLabel,MaxDeltaRMSLabel, AverageDeltaRMSLabel;
 
+    XYChart.Series RMSseries = new XYChart.Series();
 
     @FXML
     public void onResize(){
@@ -91,9 +92,15 @@ public class Controller implements Initializable, Closeable {
     @FXML
     public void showSongInfo(){
         Song song = songTable.getSelectionModel().getSelectedItem();
-        RMSLabel.setText(song.getRMSString());
-        MaxDeltaRMSLabel.setText(song.getMaxDeltaRMSString());
-        AverageDeltaRMSLabel.setText(song.getAverageDeltaRMSString());
+        if (song.getRMS()!=null){
+            RMSLabel.setText(song.getRMSString());
+            MaxDeltaRMSLabel.setText(song.getMaxDeltaRMSString());
+            AverageDeltaRMSLabel.setText(song.getAverageDeltaRMSString());
+            ObservableList points = getChartPoints(song.getRMS().getRMSlist());
+            if (RMSseries!=null)RMSseries.getData().removeAll();
+            RMSseries.setData(points);
+        }
+
 
     }
 
@@ -101,6 +108,7 @@ public class Controller implements Initializable, Closeable {
     public void initialize(URL location, ResourceBundle resources) {
         Log.addMessage("Running program...");
         inicialisationTable();
+        RMSChart.getData().add(RMSseries);
     }
 
     @Override
@@ -116,7 +124,17 @@ public class Controller implements Initializable, Closeable {
         thread.start();
     }
 
-    private ObservableList<XYChart.Data> freqChartPoints(ArrayList<Complex> cx) {
+    private ObservableList<XYChart.Data> getChartPoints(double [] cx) {
+
+        ObservableList<XYChart.Data> points = FXCollections.observableArrayList();
+
+        for (int i = 0; i < cx.length; i++) {
+            points.add(createPoint(i, cx[i], false));
+        }
+
+        return points;
+    }
+    private ObservableList<XYChart.Data> getChartPoints(ArrayList<Complex> cx) {
 
         ObservableList<XYChart.Data> points = FXCollections.observableArrayList();
 
