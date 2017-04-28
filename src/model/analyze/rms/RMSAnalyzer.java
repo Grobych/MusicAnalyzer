@@ -1,10 +1,10 @@
-package model.Analyze;
+package model.analyze.rms;
 
 import data.Dynamic;
 
 import java.util.Arrays;
 
-import static data.Constants.maxRawWave;
+import static model.util.Constants.maxRawWave;
 
 /**
  * Created by Alex on 31.03.2017.
@@ -35,7 +35,7 @@ public class RMSAnalyzer {
     public static double[] calculateDRMS(double[] array){
         double result[] = new double[array.length];
         for (int i=0; i < array.length - 1; i++){
-            result[i] = array[i+1] - array[i];
+            result[i] = Math.abs(array[i+1] - array[i]);
         }
         return result;
     }
@@ -51,7 +51,7 @@ public class RMSAnalyzer {
 
     public static Dynamic getDynamic(double [] buffer, int frameLenght){
         Dynamic result = new Dynamic();
-        int n = buffer.length / frameLenght;
+        int n = buffer.length / frameLenght ;
         System.out.println("Buffer: "+buffer.length);
         System.out.println("N: "+n);
         double max = 0;
@@ -81,6 +81,24 @@ public class RMSAnalyzer {
 
     public static double getAsDB(double value){
         return 20 * Math.log10(value/maxRawWave);
+    }
+
+    public static double[] getNormalizedLenghtRMS(double[] RMS, int length){
+        int step = RMS.length/length;
+        int i =0;
+
+        double result[] = new double[length];
+        while (i<length){
+            int temp = 0;
+            for (int j = 0; j < step; j++) {
+                temp+=RMS[i*step+j];
+            }
+            temp/=step;
+            result[i] = temp;
+            i++;
+        }
+
+        return result;
     }
 
 }

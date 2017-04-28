@@ -1,8 +1,8 @@
-package model;
+package model.util;
 
-import data.Constants;
-
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Created by Alex on 10.02.2017.

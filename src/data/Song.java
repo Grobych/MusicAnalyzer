@@ -1,12 +1,10 @@
 package data;
 
 
-import model.Analyze.RMSAnalyzer;
+import model.analyze.rms.RMSAnalyzer;
 
 import java.sql.Time;
 import java.text.DecimalFormat;
-
-import static data.Constants.AFClength;
 
 /**
  * Created by Alex on 12.01.2017.
@@ -17,12 +15,13 @@ public class Song {
     private String artist;
     private String album;
     private Time length;
-    private double [] AFC = new double[AFClength];    // АЧХ
+    private double [] AFC = null;    // АЧХ
     private int [] wave;                       // волновое представление
     private Dynamic RMS;
-    private Tone tone;
+    private String tone;
     private String fullName;
     private String path;
+    private int bpm;
 
     public String getFullName() {
         if (fullName==null){
@@ -69,7 +68,7 @@ public class Song {
         return wave;
     }
 
-    public Tone getTone() {
+    public String getTone() {
         return tone;
     }
 
@@ -81,21 +80,20 @@ public class Song {
         return path;
     }
 
+    public int getBpm() {
+        return bpm;
+    }
+
     public void setAlbum(String album) {
         this.album = album;
     }
 
     public void setAFC(double[] AFC) {
-        if (AFC.length!= Constants.AFClength)
-        {
-            // SIZE ERROR!
-            //
-            // !!!!!!!!!!
-        }
-        else
-        {
-            this.AFC = AFC;
-        }
+        this.AFC = AFC;
+    }
+
+    public void setBpm(int bpm) {
+        this.bpm = bpm;
     }
 
     public void setName(String name) {
@@ -114,7 +112,7 @@ public class Song {
         this.RMS = RMS;
     }
 
-    public void setTone(Tone tone) {
+    public void setTone(String tone) {
         this.tone = tone;
     }
 

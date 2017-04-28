@@ -1,6 +1,6 @@
-package threads;
+package model.threads;
 
-import model.SongLoader;
+import model.util.mp3Util.SongLoader;
 
 import java.io.File;
 import java.util.List;

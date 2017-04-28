@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 /**
  * Created by Alex on 14.01.2017.
  */
+
 public class SongList {
     private static ObservableList<Song> list = FXCollections.observableArrayList();
 

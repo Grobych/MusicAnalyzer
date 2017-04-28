@@ -1,7 +1,8 @@
-package model;
+package model.util.mp3Util;
 
 import data.Song;
 import data.SongList;
+import model.util.Log;
 import org.farng.mp3.MP3File;
 import org.farng.mp3.TagException;
 
@@ -70,10 +71,7 @@ public class SongLoader {
     public static void loadSongList(List<File> fileList){
         for (File file : fileList){
             Song song = loadSong(file.getAbsolutePath());
-            SongList.add(song);
+            if (song!=null) SongList.add(song);
         }
-//        List<Song> list = fileList.stream().map(tmp -> SongLoader.loadSong(tmp.getAbsolutePath())).collect(Collectors.toList());
-//        list.forEach(SongList::add);
-     //   return list;
     }
 }

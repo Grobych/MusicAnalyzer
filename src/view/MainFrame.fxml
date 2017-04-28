@@ -22,6 +22,7 @@
                 <Button fx:id="loadFolderButton" onAction="#loadFolderButtonClick"  mnemonicParsing="false" text="Load Folder" />
                 <Button fx:id="loadFileButton"   onAction="#loadFileButtonClick" mnemonicParsing="false" text="Load files" />
                 <Button fx:id="runButton"        onAction="#runButtonClick" mnemonicParsing="false" text="RUN" />
+                <Button fx:id="resultButton"     onAction="#resultButtonClick" mnemonicParsing="false" text="Get result" />
               </buttons>
             </ButtonBar>
                   <TableView prefHeight="1440.0" fx:id="songTable" onMouseClicked="#showSongInfo">
@@ -49,16 +50,16 @@
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                            <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" text="Tone             " textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
-                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" styleClass="label-bright" text="YYY" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
+                           <Label fx:id="toneLabel" alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" styleClass="label-bright" text="YYY" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                            <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" text="Temp             " textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
-                           <Label alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" styleClass="label-bright" text="ZZZ" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
+                           <Label fx:id="tempLabel" alignment="CENTER" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" styleClass="label-bright" text="ZZZ" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" />
                </children>
             </HBox>
-                  <LineChart fx:id="ACPChart">
+                  <LineChart fx:id="ACFChart">
                     <xAxis>
                       <NumberAxis side="BOTTOM" />
                     </xAxis>
